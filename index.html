@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoClipper</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header><img src="logo.png" alt=""><a href="./">AUTOCLIPPER</a></header>
+  <h1>THE BEST STREAM MOMENTS, EDITED FOR VERTICAL VIDEO</h1>
+  <p>AutoClipper is a personal tool. Several times a day it finds the most-clipped moments from public Twitch
+  streams, edits one of them into a vertical video (subtitles, title, streamer credit) and sends it to the
+  owner's own TikTok account as a draft.</p>
+  <p>Nothing is published automatically: the owner opens the draft in the TikTok app, reviews it, adds the
+  caption and decides whether to post it.</p>
+
+  <h2>How it uses TikTok</h2>
+  <ul>
+    <li><strong>Login Kit</strong>: the owner signs in once with TikTok to authorize the tool.</li>
+    <li><strong>Content Posting API (upload)</strong>: each edited video is uploaded to the owner's TikTok inbox
+    as a draft (scope <code>video.upload</code>).</li>
+    <li><strong>user.info.basic</strong>: used only to confirm which account is connected.</li>
+  </ul>
+
+  <h2>Who can use it</h2>
+  <p>AutoClipper is not a public service. It is used only by its owner, on the owner's own TikTok account.</p>
+
+  <nav>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</main>
+</body>
+</html>

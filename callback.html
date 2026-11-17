@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Connect TikTok · AutoClipper</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header><img src="logo.png" alt=""><a href="./">AUTOCLIPPER</a></header>
+  <h1 id="title">CONNECTING TIKTOK…</h1>
+  <p id="help"></p>
+  <div class="box" id="box" hidden>
+    <div class="code" id="code"></div>
+    <button type="button" id="copy">Copy code</button>
+  </div>
+  <p class="muted">This page only displays the authorization code TikTok sends back. It stores nothing and sends
+  nothing anywhere: the code is used once by the owner's tool, then expires.</p>
+</main>
+<script>
+  // TikTok renvoie ici après la connexion : ?code=...&state=... (ou ?error=...)
+  const q = new URLSearchParams(location.search);
+  const code = q.get("code");
+  const err = q.get("error_description") || q.get("error");
+  const title = document.getElementById("title");
+  const help = document.getElementById("help");
+  if (code) {
+    title.textContent = "TIKTOK CONNECTED";
+    help.textContent = "Copy this code and paste it into the AutoClipper setup script on your computer. It expires in a few minutes.";
+    document.getElementById("code").textContent = code;
+    document.getElementById("box").hidden = false;
+    document.getElementById("copy").addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(code); document.getElementById("copy").textContent = "Copied"; }
+      catch (e) { document.getElementById("copy").textContent = "Select and copy the code above"; }
+    });
+  } else if (err) {
+    title.textContent = "CONNECTION FAILED";
+    help.textContent = err;
+  } else {
+    title.textContent = "NOTHING TO SHOW";
+    help.textContent = "Open this page from the TikTok sign-in started by the AutoClipper setup script.";
+  }
+</script>
+</body>
+</html>
